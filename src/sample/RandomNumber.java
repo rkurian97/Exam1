@@ -1,9 +1,17 @@
 package sample;
 
 public class RandomNumber {
-    private int randnum;
-    public RandomNumber(int randnum) {
+    public int randnum;
+    public RandomNumber() {
         this.randnum = randnum;
+    }
+
+    public void setRandnum(int randnum) {
+        this.randnum = randnum;
+    }
+
+    public int getRandnum() {
+        return randnum;
     }
 
     @Override

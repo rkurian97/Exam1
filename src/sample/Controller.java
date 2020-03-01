@@ -15,10 +15,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.concurrent.ThreadLocalRandom;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -56,7 +53,8 @@ public class Controller  implements Initializable
                 finalrandom.setText(Integer.toString(randomInt));
                 System.out.print(randomInt);
 
-                RandomNumber rando1= new RandomNumber(randomInt);
+                RandomNumber rando1= new RandomNumber();
+                rando1.setRandnum(randomInt);
                 items.add(rando1);
 
 
@@ -65,10 +63,25 @@ public class Controller  implements Initializable
         loadbutton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-               try {
+                try {
                     Connection conn = DriverManager.getConnection(DB_URL);
                     Statement stmt = conn.createStatement();
-                    String sqlStatement = "SELECT  value FROM ";
+                    String sqlStatement = "SELECT * FROM RandomNumber";
+                    ResultSet result = stmt.executeQuery(sqlStatement);
+                    ObservableList<RandomNumber> dbNumList = FXCollections.observableArrayList();
+                    while (result.next())
+                    {
+                        RandomNumber loadrando= new RandomNumber();
+                        loadrando.randnum = result.getInt("Randnum");
+
+                        dbNumList.add(loadrando);
+                    }
+                    materialListView.setItems(dbNumList);
+
+                    System.out.println("DATA LOADED");
+
+                    stmt.close();
+                    conn.close();
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
