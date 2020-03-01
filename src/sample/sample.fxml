@@ -21,7 +21,7 @@
 <HBox fx:controller="sample.Controller" xmlns:fx="http://javafx.com/fxml" alignment="center">
     <HBox   >
         <children>
-            <ListView fx:id="numberView">
+            <ListView fx:id="NUMBERS">
 
             </ListView>
         </children>

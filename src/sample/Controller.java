@@ -24,7 +24,7 @@ import java.util.ResourceBundle;
 public class Controller  implements Initializable
 {
     @FXML
-    private ListView<RandomNumber> numberView;
+    private ListView<RandomNumber> NUMBERS;
     @FXML
     private TextField minTextField;
     @FXML
@@ -44,7 +44,7 @@ public class Controller  implements Initializable
     public void initialize(URL url, ResourceBundle resourceBundle)
     {
 
-        ObservableList<RandomNumber> items = numberView.getItems();
+        ObservableList<RandomNumber> items = NUMBERS.getItems();
 
         runbutton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
