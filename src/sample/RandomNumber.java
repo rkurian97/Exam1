@@ -1,11 +1,13 @@
 package sample;
 
 public class RandomNumber {
-    private int value;
-    public RandomNumber(int value){
-        this.value=value;
+    private int randnum;
+    public RandomNumber(int randnum) {
+        this.randnum = randnum;
     }
-    public int getValue(){
-        return value;
+
+    @Override
+    public String toString() {
+        return Integer.toString(randnum);
     }
 }

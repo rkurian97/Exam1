@@ -14,6 +14,11 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.concurrent.ThreadLocalRandom;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -33,19 +38,24 @@ public class Controller  implements Initializable
     JFXButton runbutton;
     @FXML
     JFXButton loadbutton;
+    @FXML
+    JFXListView materialListView;
 
 
-
+    final String DB_URL = "jdbc:derby:NumberDB;create=true";
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle)
     {
 
         ObservableList<RandomNumber> items = numberView.getItems();
+
         runbutton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                int randomInt = ThreadLocalRandom.current().nextInt(Integer.parseInt(minTextField.getText()), Integer.parseInt(maxTextField.getText()));
+                int randomInt = ThreadLocalRandom.current().nextInt(Integer.parseInt(minTextField.getText()), Integer.parseInt(maxTextField.getText())); //https://codippa.com/how-to-generate-a-random-number-with-in-a-range-in-java/
                 finalrandom.setText(Integer.toString(randomInt));
+                System.out.print(randomInt);
+
                 RandomNumber rando1= new RandomNumber(randomInt);
                 items.add(rando1);
 
@@ -55,6 +65,13 @@ public class Controller  implements Initializable
         loadbutton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
+               try {
+                    Connection conn = DriverManager.getConnection(DB_URL);
+                    Statement stmt = conn.createStatement();
+                    String sqlStatement = "SELECT  value FROM ";
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
 
             }
         });
