@@ -82,8 +82,10 @@ public class Controller  implements Initializable
 
                     stmt.close();
                     conn.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
+                } catch (Exception ex) {
+                    var msg = ex.getMessage();
+                    System.out.println("DATA NOT LOADED");
+                    System.out.println(msg);
                 }
 
             }

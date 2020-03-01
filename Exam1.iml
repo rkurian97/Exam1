@@ -10,5 +10,6 @@
     <orderEntry type="library" name="derby (1)" level="application" />
     <orderEntry type="library" name="jfoenix-9.0.8 (1)" level="application" />
     <orderEntry type="library" name="mysql-connector-java-5.1.48" level="application" />
+    <orderEntry type="library" name="derby" level="application" />
   </component>
 </module>
