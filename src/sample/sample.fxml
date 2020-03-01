@@ -1,0 +1,51 @@
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.CheckBox?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXCheckBox?>
+<?import com.jfoenix.controls.JFXRadioButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import javafx.collections.FXCollections?>
+<?import java.lang.String?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ComboBox?>
+<?import com.jfoenix.controls.JFXListView?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TableColumn?>
+<HBox fx:controller="sample.Controller" xmlns:fx="http://javafx.com/fxml" alignment="center">
+    <HBox   >
+        <children>
+            <TableView fx:id="numberView">
+                <columns>
+                    <TableColumn fx:id="numCol" />
+                </columns>
+
+            </TableView>
+        </children>
+    </HBox>
+    <VBox>
+        <HBox spacing="5">
+            <Label prefWidth="150">Minimum (inclusive)</Label>
+            <TextField fx:id="minTextField"></TextField>
+        </HBox>
+        <HBox spacing="5">
+            <Label prefWidth="150"> Maximum (exclusive)</Label>
+            <TextField fx:id= "maxTextField">  </TextField>
+        </HBox>
+        <HBox>
+            <VBox>
+                <JFXButton text="RUN" prefWidth="150" fx:id="runbutton"/>
+                <Label prefWidth="150" alignment="center" fx:id="finalrandom" > </Label>
+                <JFXButton text="LOAD NUMBERS" prefWidth="150" fx:id="loadbutton"/>
+                <JFXListView fx:id="materialListView" prefHeight="200" prefWidth="250"/>
+            </VBox>
+        </HBox>
+
+    </VBox>
+</HBox>
