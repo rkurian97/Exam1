@@ -1,5 +1,7 @@
 package sample;
 import javafx.application.*;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.stage.*;
 import javafx.scene.*;
 import javafx.scene.layout.*;
@@ -20,8 +22,7 @@ import java.util.ResourceBundle;
 public class Controller  implements Initializable
 {
     @FXML
-    private TableView<RandomNumber> numberView;
-
+    private ListView<RandomNumber> numberView;
     @FXML
     private TextField minTextField;
     @FXML
@@ -32,25 +33,22 @@ public class Controller  implements Initializable
     JFXButton runbutton;
     @FXML
     JFXButton loadbutton;
-    @FXML
-    JFXListView materialListView;
-
-
-
 
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle)
     {
-        TableColumn numCol= new TableColumn("Random Numbers");
-        numberView.getColumns().addAll(numCol);
+
+        ObservableList<RandomNumber> items = numberView.getItems();
         runbutton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
                 int randomInt = ThreadLocalRandom.current().nextInt(Integer.parseInt(minTextField.getText()), Integer.parseInt(maxTextField.getText()));
                 finalrandom.setText(Integer.toString(randomInt));
-                numberView.getItems().add(randomInt);
+                RandomNumber rando1= new RandomNumber(randomInt);
+                items.add(rando1);
+
 
             }
         });

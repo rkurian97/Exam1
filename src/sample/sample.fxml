@@ -21,12 +21,9 @@
 <HBox fx:controller="sample.Controller" xmlns:fx="http://javafx.com/fxml" alignment="center">
     <HBox   >
         <children>
-            <TableView fx:id="numberView">
-                <columns>
-                    <TableColumn fx:id="numCol" />
-                </columns>
+            <ListView fx:id="numberView">
 
-            </TableView>
+            </ListView>
         </children>
     </HBox>
     <VBox>
